@@ -18,7 +18,7 @@ body {
   display: flex;
   text-align: left;
   flex-direction: column;
-  width: 350px;
+  width: 450px;
   margin: 0;
   padding: 0;
   margin-left: auto;
@@ -32,7 +32,7 @@ body {
 }
 
 .button {
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
   border: none;
   border-radius: 8px;
   color: white;

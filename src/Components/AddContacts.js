@@ -1,13 +1,12 @@
 import s from "./Phonebook.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../Redux/selectors";
+import { addContacts, getContacts } from "../Redux/selectors";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-import { addContactAction } from "../Redux/actions";
 
 export default function Phonebook() {
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [phone, setPhone] = useState("");
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
@@ -19,7 +18,7 @@ export default function Phonebook() {
         setName(value);
         break;
       case "number":
-        setNumber(value);
+        setPhone(value);
         break;
       default:
         return;
@@ -33,8 +32,8 @@ export default function Phonebook() {
     });
     if (!repeatName) {
       Notify.success(`${name} is added in contacts`);
-      dispatch(addContactAction(name, number));
-      setNumber("");
+      dispatch(addContacts({ name, phone }));
+      setPhone("");
       setName("");
       return;
     }
@@ -61,7 +60,7 @@ export default function Phonebook() {
           className={s.input}
           type="tel"
           name="number"
-          value={number}
+          value={phone}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
