@@ -8,14 +8,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
-
-// const persistConfig = {
-//   key: "contacts",
-//   storage,
-//   blacklist: ["filter"],
-// };
 
 const store = configureStore({
   reducer: { phonebook: contactsReducer },
